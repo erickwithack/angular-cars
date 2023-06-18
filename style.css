@@ -1,0 +1,7 @@
+.carDisplay {
+  display: flex;
+  flex-basis: 1;
+  gap: 10px;
+  border-right: 1px solid black;
+  padding-right: 10px;
+}

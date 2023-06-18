@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./script.js"></script>
+  </head>
+
+  <body>
+    <header ng-include="'./header.html'"></header>
+    <button ng-click="order='color'">Color</button>
+    <button ng-click="order='capacity'">Capacity</button>
+    <div ng-controller="myController">
+      <input type="text" ng-model="search" />
+      <ul>
+        <li
+          class="carDisplay"
+          ng-repeat="car in cars | orderBy: order | filter: search"
+        >
+          {{car.type}} {{car.color}} {{car.capacity}}
+          <span ng-click="deleteCar(car)"> X </span>
+        </li>
+      </ul>
+
+      <form ng-submit="addCar()">
+        <input type="text" placeholder="enter type" ng-model="myapp.type" />
+        <input type="text" placeholder="enter color" ng-model="myapp.color" />
+        <input
+          type="text"
+          placeholder="enter capacity"
+          ng-model="myapp.capacity"
+        />
+        <input type="submit" value="Add a car" />
+      </form>
+    </div>
+  </body>
+</html>
